@@ -84,7 +84,7 @@
 </xml>
 
 <xml id="startBlocks" style="display: none">
-  <block type="variables_set" id="set_n_initial" inline="true" x="20" y="20">
+  <block type="variables_set" id="set_n_initial" inline="true" x="20" y="20" deletable="false" movable="false">
     <field name="VAR">n</field>
     <value name="VALUE">
       <block type="math_number">
@@ -92,32 +92,32 @@
       </block>
     </value>
     <next>
-      <block type="controls_repeat_ext" id="repeat" inline="true">
+      <block type="controls_repeat_ext" id="repeat" inline="true" deletable="false" movable="false">
         <value name="TIMES">
           <block type="math_number">
             <field name="NUM">4</field>
           </block>
         </value>
         <statement name="DO">
-          <block type="variables_set" id="set_n_update" inline="true">
+          <block type="variables_set" id="set_n_update" inline="true" deletable="false" movable="false">
             <field name="VAR">n</field>
             <value name="VALUE">
-              <block type="math_arithmetic" inline="true">
+              <block type="math_arithmetic" inline="true" deletable="false" movable="false">
                 <field name="OP">MULTIPLY</field>
                 <value name="A">
-                  <block type="variables_get">
+                  <block type="variables_get" deletable="false" movable="false">
                     <field name="VAR">n</field>
                   </block>
                 </value>
                 <value name="B">
-                  <block type="math_number">
+                  <block type="math_number" deletable="false" movable="false">
                     <field name="NUM">2</field>
                   </block>
                 </value>
               </block>
             </value>
             <next>
-              <block type="text_print" id="print">
+              <block type="text_print" id="print" deletable="false" movable="false">
                 <value name="TEXT">
                   <block type="variables_get">
                     <field name="VAR">n</field>
@@ -222,6 +222,7 @@ function stepCode() {
     } finally {
       if (!hasMoreCode) {
         // Program complete, no more code to execute.
+        Materialize.toast('Program complete!', 4000)
         outputArea.value += '\n\n<< Program complete >>';
 
         myInterpreter = null;
