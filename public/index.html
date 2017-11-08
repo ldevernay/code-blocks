@@ -151,6 +151,7 @@ function initApi(interpreter, scope) {
   interpreter.setProperty(scope, 'alert',
   interpreter.createNativeFunction(function(text) {
     text = text ? text.toString() : '';
+    Materialize.toast(text, 4000)
     outputArea.value += '\n' + text;
   }));
 
@@ -207,7 +208,7 @@ function stepCode() {
     // And then show generated code in an alert.
     // In a timeout to allow the outputArea.value to reset first.
     setTimeout(function() {
-      alert('Ready to execute code!');
+      Materialize.toast('Ready to execute code!', 4000)
       codeArea.value += '\n' + latestCode;
       highlightPause = true;
       stepCode();
