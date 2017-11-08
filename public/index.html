@@ -29,20 +29,31 @@
 </head>
 
 <body>
+  <a id="stepButton" href="#" class="waves-effect waves-light btn btn-floating" onclick="stepCode()"><i class="material-icons">play_arrow</i></a>
+
+  <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">live_help</i></a>
+
+  <div class="tap-target" data-activates="stepButton">
+    <div class="tap-target-content">
+      <h5>Help</h5>
+      <p>Use to run program step-by-step</p>
+    </div>
+  </div>
+  <!--
   <h3>Try coding online!</h3>
 
   <p>
-    <a href="#" class="waves-effect waves-light btn" onclick="stepCode()" id="stepButton">Step JavaScript</a>
-  </p>
+  <a href="#" class="waves-effect waves-light btn" onclick="stepCode()" id="stepButton">Step JavaScript</a>
+</p> -->
 
-  <div style="width: 100%">
-    <div id="blocklyDiv"
-    style="display: inline-block; height: 480px; width: 45%"></div>
-    <textarea id="code" disabled="disabled"
-    style="display: inline-block; height: 480px; width: 25%;">
-  </textarea>
-  <textarea id="output" disabled="disabled"
+<div style="width: 100%">
+  <div id="blocklyDiv"
+  style="display: inline-block; height: 480px; width: 45%"></div>
+  <textarea id="code" disabled="disabled"
   style="display: inline-block; height: 480px; width: 25%;">
+</textarea>
+<textarea id="output" disabled="disabled"
+style="display: inline-block; height: 480px; width: 25%;">
 </textarea>
 </div>
 
