@@ -16,10 +16,13 @@
 
   <div style="width: 100%">
     <div id="blocklyDiv"
-    style="display: inline-block; height: 480px; width: 58%"></div>
-    <textarea id="output" disabled="disabled"
-    style="display: inline-block; height: 480px; width: 38%;">
+    style="display: inline-block; height: 480px; width: 40%"></div>
+    <textarea id="code" disabled="disabled"
+    style="display: inline-block; height: 480px; width: 25%;">
   </textarea>
+  <textarea id="output" disabled="disabled"
+  style="display: inline-block; height: 480px; width: 25%;">
+</textarea>
 </div>
 
 <xml id="toolbox" style="display: none">
@@ -126,6 +129,7 @@ Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
 demoWorkspace);
 
 var outputArea = document.getElementById('output');
+var codeArea = document.getElementById('code');
 var stepButton = document.getElementById('stepButton');
 var myInterpreter = null;
 
@@ -189,8 +193,9 @@ function stepCode() {
     // And then show generated code in an alert.
     // In a timeout to allow the outputArea.value to reset first.
     setTimeout(function() {
-      alert('Ready to execute the following code\n' +
-      '===================================\n' + latestCode);
+      // alert('Ready to execute the following code\n' +
+      // '===================================\n' + latestCode);
+      codeArea.value = latestCode;
       highlightPause = true;
       stepCode();
     }, 1);
