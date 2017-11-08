@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "blockly": "^1.0.0"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
