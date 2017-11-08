@@ -4,7 +4,21 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Simplon algo/code tests</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="scripts/acorn_interpreter.js"></script>
+  <script src="scripts/blockly_compressed.js"></script>
+  <script src="scripts/blocks_compressed.js"></script>
+  <script src="scripts/javascript_compressed.js"></script>
+  <script src="scripts/msg/js/en.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,111 +30,98 @@
 
   <div style="width: 100%">
     <div id="blocklyDiv"
-    style="display: inline-block; height: 480px; width: 40%"></div>
-    <textarea id="code" disabled="disabled"
-    style="display: inline-block; height: 480px; width: 25%;">
-  </textarea>
-  <textarea id="output" disabled="disabled"
-  style="display: inline-block; height: 480px; width: 25%;">
-</textarea>
-</div>
+        style="display: inline-block; height: 480px; width: 58%"></div>
+    <textarea id="output" disabled="disabled"
+        style="display: inline-block; height: 480px; width: 38%;">
+    </textarea>
+  </div>
 
-<xml id="toolbox" style="display: none">
-  <category name="Logic">
-    <block type="controls_if"></block>
-    <block type="logic_compare"></block>
-    <block type="logic_operation"></block>
-    <block type="logic_negate"></block>
-    <block type="logic_boolean"></block>
-  </category>
-  <category name="Loops">
-    <block type="controls_repeat_ext">
-      <value name="TIMES">
-        <block type="math_number">
-          <field name="NUM">10</field>
-        </block>
-      </value>
-    </block>
-    <block type="controls_whileUntil"></block>
-  </category>
-  <category name="Math">
-    <block type="math_number"></block>
-    <block type="math_arithmetic"></block>
-    <block type="math_single"></block>
-  </category>
-  <category name="Text">
-    <block type="text"></block>
-    <block type="text_length"></block>
-    <block type="text_print"></block>
-    <block type="text_prompt_ext">
-      <value name="TEXT">
-        <block type="text"></block>
-      </value>
-    </block>
-  </category>
-  <category name="Variables" custom="VARIABLE"></category>
-  <category name="Functions" custom="PROCEDURE"></category>
-</xml>
-
-<xml id="startBlocks" style="display: none">
-  <block type="variables_set" id="set_n_initial" inline="true" x="20" y="20">
-    <field name="VAR">n</field>
-    <value name="VALUE">
-      <block type="math_number">
-        <field name="NUM">1</field>
-      </block>
-    </value>
-    <next>
-      <block type="controls_repeat_ext" id="repeat" inline="true">
+  <xml id="toolbox" style="display: none">
+    <category name="Logic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+    </category>
+    <category name="Loops">
+      <block type="controls_repeat_ext">
         <value name="TIMES">
           <block type="math_number">
-            <field name="NUM">4</field>
+            <field name="NUM">10</field>
           </block>
         </value>
-        <statement name="DO">
-          <block type="variables_set" id="set_n_update" inline="true">
-            <field name="VAR">n</field>
-            <value name="VALUE">
-              <block type="math_arithmetic" inline="true">
-                <field name="OP">MULTIPLY</field>
-                <value name="A">
-                  <block type="variables_get">
-                    <field name="VAR">n</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="math_number">
-                    <field name="NUM">2</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <next>
-              <block type="text_print" id="print">
-                <value name="TEXT">
-                  <block type="variables_get">
-                    <field name="VAR">n</field>
-                  </block>
-                </value>
-              </block>
-            </next>
-          </block>
-        </statement>
       </block>
-    </next>
-  </block>
-</xml>
+      <block type="controls_whileUntil"></block>
+    </category>
+    <category name="Math">
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+      <block type="math_single"></block>
+    </category>
+    <category name="Text">
+      <block type="text"></block>
+      <block type="text_length"></block>
+      <block type="text_print"></block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
+    </category>
+    <category name="Variables" custom="VARIABLE"></category>
+    <category name="Functions" custom="PROCEDURE"></category>
+  </xml>
 
-<script
-src="https://code.jquery.com/jquery-3.2.1.min.js"
-integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-crossorigin="anonymous"></script>
-<script src="scripts/acorn_interpreter.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/blockly@1.0.0/blockly_compressed.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/blockly@1.0.0/blocks_compressed.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/blockly@1.0.0/msg/js/en.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/blockly@1.0.0/javascript_compressed.js"></script>
+  <xml id="startBlocks" style="display: none">
+    <block type="variables_set" id="set_n_initial" inline="true" x="20" y="20">
+      <field name="VAR">n</field>
+      <value name="VALUE">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <next>
+        <block type="controls_repeat_ext" id="repeat" inline="true">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">4</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="variables_set" id="set_n_update" inline="true">
+              <field name="VAR">n</field>
+              <value name="VALUE">
+                <block type="math_arithmetic" inline="true">
+                  <field name="OP">MULTIPLY</field>
+                  <value name="A">
+                    <block type="variables_get">
+                      <field name="VAR">n</field>
+                    </block>
+                  </value>
+                  <value name="B">
+                    <block type="math_number">
+                      <field name="NUM">2</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="text_print" id="print">
+                  <value name="TEXT">
+                    <block type="variables_get">
+                      <field name="VAR">n</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </next>
+    </block>
+  </xml>
+
 <script>
 var demoWorkspace = Blockly.inject('blocklyDiv',
 {media: 'media/',
@@ -129,7 +130,7 @@ Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
 demoWorkspace);
 
 var outputArea = document.getElementById('output');
-var codeArea = document.getElementById('code');
+// var codeArea = document.getElementById('code');
 var stepButton = document.getElementById('stepButton');
 var myInterpreter = null;
 
@@ -193,9 +194,9 @@ function stepCode() {
     // And then show generated code in an alert.
     // In a timeout to allow the outputArea.value to reset first.
     setTimeout(function() {
-      // alert('Ready to execute the following code\n' +
-      // '===================================\n' + latestCode);
-      codeArea.value = latestCode;
+      alert('Ready to execute the following code\n' +
+      '===================================\n' + latestCode);
+      // codeArea.value = latestCode;
       highlightPause = true;
       stepCode();
     }, 1);
