@@ -4,12 +4,9 @@ const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-// app.get('/', function (req, res) {
-//   res.render('index.html', {
-//     pageTitle: 'Home'
-//   });
-// })
+// Set port to env variable for Heroku, 3000 for dev
+const port = process.env.PORT || 3000;
 
-app.listen(3000, function () {
-  console.log('code-blocks listening on port 3000!')
+app.listen(port, function () {
+  console.log(`code-blocks listening on port ${port}!`)
 })
