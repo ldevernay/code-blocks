@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "blockly": "^1.0.0"
+    "blockly": "^1.0.0",
+    "express": "^4.16.2"
   },
   "engines": {
     "node": "8.2.1"
